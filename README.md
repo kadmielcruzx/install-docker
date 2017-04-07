@@ -71,12 +71,38 @@ Próximo passo é subir a imagem Docker com Apache
 Imagem docker criada para servir como base de estudos ao servidor web apache.
 
 Utilize:
+A maquina chicocx é a do professor onde está a imagem.
              
-      sudo docker run -dit --name apache-app --publish=9081:80 [seu root]/docker-apache
+      sudo docker run -dit --name apache-app --publish=9081:80 chicocx/docker-apache
 
 Para configurar externamente à imagem docker o local onde o apache salvará o site, utilize:
 
-      sudo docker run -dit --name apache-app --publish=9081:80 -v "$PWD":/usr/local/apache2/htdocs/ [seu root]/docker-apache
+      sudo docker run -dit --name apache-app --publish=9081:80 -v "$PWD":/usr/local/apache2/htdocs/ chicocx/docker-apache
+   
+Entrar na máquina/imagem
+
+    docker exec -it [aqui é o nome do root da maquina imagem] bash 
+
+sair sem encerrar a máquina:
+
+    ctrl p q
+
+Lista o status dos containers
+
+    docker ps -a
+
+Exclui os containers que estão parados
+
+    docker rm $(docker ps -q -f status=exited)
+
+Lista as imagens baixadas
+
+    docker images
+
+Exclui alguma imagem
+
+    docker rmi f72216345d97
+
 
 
 
